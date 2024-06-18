@@ -2,5 +2,5 @@
 - REPL
 
 <h2>COMMANDS:</h2>
-1. exit (with status 0)
-2. echo
+1. exit (with status 0)<br>
+2. echo<br>
