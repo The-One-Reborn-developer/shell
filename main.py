@@ -2,7 +2,7 @@ import sys
 
 def main():
     # List to store commands
-    commands_list = ['exit', 'echo']
+    commands_list = ['exit', 'echo', 'type']
     # List to store arguments
     arguments_list = ['0']
     # Exit status
@@ -34,7 +34,14 @@ def main():
                     print(' '.join(user_input[1:]))  # Echo the arguments
                 else:  # If the inputed echo command was without arguments
                     argument = input()  # Wait for argument input
-                    print(argument)        
+                    print(argument)
+            elif user_input[0] == commands_list[2]:  # If the inputed command is type
+                if len(user_input) > 1:  # If the inputed type command was with arguments
+                    if user_input[1] in commands_list:  # If the inputed argument is a command
+                        print(f'{user_input[1]} is a shell builtin')
+                    else:
+                        print(f'{user_input[1]}: not found')
 
 if __name__ == "__main__":
     main()
+
