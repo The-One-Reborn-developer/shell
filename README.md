@@ -1,5 +1,6 @@
 <h2>FEATS:</h2>
-* REPL
+- REPL
 
 <h2>COMMANDS:</h2>
-* exit (with status 0)
+1. exit (with status 0)
+2. echo
