@@ -2,4 +2,4 @@
 * REPL
 
 <h2>COMMANDS:</h2>
-* exit
+* exit (with status 0)
