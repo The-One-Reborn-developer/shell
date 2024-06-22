@@ -4,7 +4,7 @@ import subprocess
 
 def main():
     commands_list = ['exit', 'echo', 'type', 'pwd', 'cd']  # List to store commands
-    arguments_list = ['0']  # List to store arguments
+    arguments_list = ['0', '~']  # List to store arguments
     exit_status = 0  # Exit status
     
     while True:
@@ -48,7 +48,10 @@ def main():
         elif user_input[0] == commands_list[4]:  # If the inputed command is cd
             try:
                 if len(user_input) > 1:  # If the inputed cd command was with arguments
-                    os.chdir(user_input[1])
+                    if user_input[1] == arguments_list[1]:  # Go to home directory
+                        os.chdir(os.path.expanduser(arguments_list[1]))
+                    else:
+                        os.chdir(user_input[1])
                 else:  # If the inputed cd command was without arguments
                     argument = input()  # Wait for argument input
                     os.chdir(argument)
