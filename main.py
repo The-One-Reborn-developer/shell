@@ -1,4 +1,5 @@
 import sys
+import os
 
 def main():
     # List to store commands
@@ -9,7 +10,7 @@ def main():
     exit_status = 0
     
     while True:
-        # Uncomment this block to pass the first stage
+        # Write a standard shell prompt to stdout
         sys.stdout.write("$ ")
         sys.stdout.flush()
 
@@ -41,6 +42,23 @@ def main():
                         print(f'{user_input[1]} is a shell builtin')
                     else:
                         print(f'{user_input[1]}: not found')
+
+
+# Function to find a command that is in PATH
+def find_command(command):
+    command_found = False
+    path_dirs = os.environ.get('PATH', '').split(os.pathsep)
+    for directory in path_dirs:  # Check each directory in PATH
+        for root, dirs, files in os.walk(directory):  # Check each subdirectory in the directory
+            for name in files:  # Check each file in the directory
+                if name == command:
+                    command_found = True
+                    print(f'{command} is {os.path.abspath(os.path.join(root, name))}')
+                    return
+
+    if not command_found:
+        print(f'{command}: not found')
+
 
 if __name__ == "__main__":
     main()
