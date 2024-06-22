@@ -1,6 +1,6 @@
 <h2>FEATS:</h2>
-- REPL
-- PATH
+- REPL.<br>
+- PATH.<br>
 
 <h2>COMMANDS:</h2>
 1. exit (with status 0): terminates the program with the argument status.<br>
