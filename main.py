@@ -3,7 +3,7 @@ import os
 import subprocess
 
 def main():
-    commands_list = ['exit', 'echo', 'type', 'pwd']  # List to store commands
+    commands_list = ['exit', 'echo', 'type', 'pwd', 'cd']  # List to store commands
     arguments_list = ['0']  # List to store arguments
     exit_status = 0  # Exit status
     
@@ -45,6 +45,15 @@ def main():
                         print(f'{user_input[1]}: not found')
         elif user_input[0] == commands_list[3]:  # If the inputed command is pwd
             print(os.getcwd())
+        elif user_input[0] == commands_list[4]:  # If the inputed command is cd
+            try:
+                if len(user_input) > 1:  # If the inputed cd command was with arguments
+                    os.chdir(user_input[1])
+                else:  # If the inputed cd command was without arguments
+                    argument = input()  # Wait for argument input
+                    os.chdir(argument)
+            except FileNotFoundError:
+                print(f'{user_input[0]}: {user_input[1]}: No such file or directory')
         elif find_command(user_input[0]):  # If the input is a program that is in PATH
             execute_program(user_input[0], user_input[1:])
         else:
